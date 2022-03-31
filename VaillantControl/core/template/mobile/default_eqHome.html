@@ -1,0 +1,1134 @@
+<div class="eqLogic eqLogic-widget allowResize allowReorderCmd allowLayout #custom_layout#  #category# "
+      style="min-height: 210px;min-width:230px; position: relative; width:#width#; height:#height#;
+             background-color:#background-color#; color:#color#; border:#border#; border-radius:#border-radius#;#style#"
+      data-eqType="#eqType#" data-eqLogic_id="#id#" data-eqLogic_uid="#uid#" data-nahome_id="#nahomeid#" data-cat_color="#catcolore#" 
+      data-version="#version#" data-translate-category="#translate_category#" data-category="#category#" data-tags="#tags#">
+   
+       
+  <span class="statusCmd"></span>
+  <span class="cmd refresh pull-right cursor" data-cmd_id="#refresh_id#"><i class="fas fa-sync"></i></span>
+  <center class="widget-name">
+        
+    
+    
+    
+		
+		<!--<span class="cmd anticipation pull-left cursor" title="Pas d'anticipation en cours"  data-cmd_id='#heatstatus_id#' 
+                 style="margin-top: 5px; margin-left: 3px;color:#3498db !important;">
+			<i class="icon jeedomapp-playerplay "></i>
+		</span>	
+-->
+            <span class="warning" title="#alert_name#">
+                <i class='#alert_icon#'></i>
+            </span>
+      
+      	<span class="reportModeVisible" style="display:none">#object_name#</span>
+		<a href="#eqLink#" class="reportModeHidden" style="margin-right: 5px;">#name_display# </a>
+</center> 
+  <script>
+	
+    
+   
+    
+    if ( !isset($("#VaillantControl_css").attr('href')) ){
+   		$("head").append('<link>');
+    	var nacss = $("head").children(":last");
+    	nacss.attr({
+              id: "VaillantControl_css",
+              rel:  "stylesheet",
+              href: "plugins/VaillantControl/core/template/dashboard/src/VaillantControl.css"
+        });
+	}
+    
+    
+	$('.eqLogic[data-eqLogic_uid=#uid#] .refresh').on('click', function () {
+		jeedom.cmd.execute({id: '#refresh_id#'});
+    });
+	$('.eqLogic[data-eqLogic_uid=#uid#]').ready(function(el) { 
+		
+      
+      
+      catcolor = $('.eqLogic[data-eqLogic_uid=#uid#] .widget-name').css('background-color');
+		$('.eqLogic[data-eqLogic_uid=#uid#]').closest('.eqLogic-widget').attr('data-cat_color', catcolor);				
+		eq_width = $('.eqLogic[data-eqLogic_uid=#uid#]').closest('.eqLogic-widget').css('width');
+		eq_height = $('.eqLogic[data-eqLogic_uid=#uid#]').closest('.eqLogic-widget').css('height');
+		cat_color = $('.eqLogic[data-eqLogic_uid=#uid#]').closest('.eqLogic-widget').attr('data-cat_color');
+		if ('#deviceName#' != '' ) {
+        	$('.eqLogic[data-eqLogic_uid=#uid#] .wname').append(' - #deviceName#');
+        }
+     	if ('#etat#' == 1) {
+        	$('.eqLogic[data-eqLogic_uid=#uid#] .icon_etat').css('color', cat_color + '!important');
+        }
+    
+    //////
+		$('.eqLogic[data-eqLogic_uid=#uid#] .cmd-widget').each(function() {
+      		var cmdid = $(this).attr('data-cmd_id');
+      	
+      		if (cmdid && cmdid.startsWith('#') && cmdid.endsWith('#')) {
+          		//$(this).hide();
+              	console.log('invalide cmdId:' + cmdid );
+              	$(this).addClass('hide');
+        		
+          	}
+		});
+    
+    
+    
+    });
+	/*$('.eqLogic[data-nahome_id=#nahomeid#]').each(function() {
+		console.log('each:' + $(this).find('.room').attr('class') );
+    });*/
+    
+  
+    
+    
+    
+   
+	</script>
+	<section> 	
+        <span class="cmd cmd-widget" data-cmd_id="#setschedule_id#" style="display:none;"></span>
+        <span class="cmd cmd-widget" data-cmd_id="#setoff_id#" style="display:none;"></span>
+        <span class="cmd cmd-widget" data-cmd_id="#setaway_id#" style="display:none;"></span>
+        <span class="cmd cmd-widget" data-cmd_id="#sethg_id#" style="display:none;"></span>
+        <span class="cmd cmd-widget" data-cmd_id="#planningset_id#" style="display:none;"></span>
+        <span class="cmd cmd-widget" data-cmd_id="#refreshall_id#" style="display:none;"></span>
+        <span class="cmd cmd-widget" data-cmd_id="#setmode_id#" style="display:none;"></span>
+        <span class="cmd cmd-widget" data-cmd_id="#setoffset_id#" style="display:none;"></span>
+        <span class="cmd cmd-widget" data-cmd_id="#homeboost_id#" style="display:none;"></span>
+	</section>
+	
+  <div class="eq_body">
+     
+    
+    
+    
+    
+  <center>  
+<div class="boilerInfos"> 
+      
+  
+  
+  <!--  ********"#Anticipation#"******** -->
+<div class="cmd cmd-widget #temperature_outdoor_history# tooltips" data-type="info" data-subtype="numeric" data-cmd_id="#temperature_outdoor#" data-cmd_uid="cmd#temperature_outdoor##uid#" data-version="#version#" style="display: inline-grid; width: 25%; margin-top: 5px;">
+  
+    
+  	<div class="content-xs">
+    	<div class="naext-temperature home h-relative" style="transform: inherit!important;">
+          	
+    		<span class="top h-absolute "></span>
+			<span class="right h-absolute "></span>
+			<span class="bottom h-absolute "></span>
+			<span class="left h-absolute "></span>
+			
+			<span class="cmd-widget #temperature_outdoor_history# " data-type="info" data-cmd_id="#temperature_outdoor_id#">
+               <span class="top h-absolute titlecmd"></span>
+               <span class="cmd-widget #temperature_outdoor_history# temp_Extent" data-type="info" data-cmd_id="#temperature_outdoor_id#">
+   		</span>
+          	</span>
+		</div>
+  
+  
+
+	<script>
+     
+  	if (!"#temperature_outdoor#".startsWith('#') && !"#temperature_outdoor#".endsWith('#')
+       && "#temperature_outdoor#" != '') {
+		console.log("temperature_outdoor: " + "#temperature_outdoor#" )
+      	//$('.eqLogic[data-eqLogic_uid=#uid#] .naext_temp').show();
+    	var temperature_outdoor = parseFloat('#temperature_outdoor#'); 
+		var temperature_outdoorent = Math.trunc(temperature_outdoor);
+      	//var temperature_outdoorent = Math.floor(temperature_outdoor);
+		var temperature_outdoordec = Math.round(temperature_outdoor*10 - temperature_outdoorent*10);
+      	//console.log("temperature_outdoordec: " + temperature_outdoordec)
+      
+      	if (temperature_outdoor < 10) {
+			$('.eqLogic[data-eqLogic_uid=#uid#] .temp_Extent').html("0"+temperature_outdoorent + '<span class="temp_Extdec decimal"></span>');
+		} else {
+			$('.eqLogic[data-eqLogic_uid=#uid#] .temp_Extent').html(temperature_outdoorent + '<span class="temp_Extdec decimal"></span>');
+		}
+		$('.eqLogic[data-eqLogic_uid=#uid#] .temp_Extdec').empty().html(temperature_outdoordec);
+      
+      
+      
+	}
+  </script> 
+  	</div>
+  
+  
+</div>
+
+
+<!--  ********"0"******** 
+<div class="cmd  tooltips" 
+             style="position:absolute; left:3px; top:5px;" data-cmd_id=''>
+	<span class="icon jeedom-feu" style="" ></span>
+</div>
+
+-->
+     <div class="cmd cmd-widget naboilerstatus #therm_boilerstatus_history# #status_history# tooltips" data-type="info" data-subtype="other"  data-cmd_uid="cmd#status##uid#" data-version="#version#" style="display: inline-grid;width: 25%;    margin-top: 10px;;">
+       
+  <div class="content-xs">
+    <span class="iconCmd naeq_status" data-cmd_id="#status_id#" style="color:rgba(250,250,250,0.3)!Important; left:3px;">
+      <span class="icon jeedom-feu"></span>
+    </span>
+  </div>
+  
+  
+  
+    
+  
+  <script>
+     jeedom.cmd.update['#boiler_anticipating_id#'] = function(_options){
+      var cmd = $('.cmd[data-cmd_id=#boiler_anticipating_id#]');
+      if('#_time_widget_#' == '1'){
+        jeedom.cmd.displayDuration(_options.valueDate,  cmd.find('.timeCmd'));
+      }else{
+        cmd.find('.timeCmd').parent().remove();
+      }
+      //cmd.attr('title','Date de valeur : '+_options.valueDate+'<br/>Date de collecte : '+_options.collectDate)
+      if (_options.display_value == '1') {
+        cmd.find('.iconCmd').empty().append("<i class='icon_green fas fa-check'></i>");
+      }else {
+        cmd.find('.iconCmd').empty().append("<i class='icon_red fas fa-times'></i>");
+      }
+    }
+    jeedom.cmd.update['#boiler_anticipating_id#']({display_value:'#boiler_anticipating#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'})
+  
+ ///////////////////////////////////////////
+    
+     jeedom.cmd.update['#boiler_status_id#'] = function(_options){
+      var cmd = $('.cmd[data-cmd_id=#boiler_status_id#]');
+      if('#_time_widget_#' == '1'){
+        jeedom.cmd.displayDuration(_options.valueDate,  cmd.find('.timeCmd'));
+      }else{
+        cmd.find('.timeCmd').parent().remove();
+      }
+      //cmd.attr('title','Date de valeur : '+_options.valueDate+'<br/>Date de collecte : '+_options.collectDate)
+      if (_options.display_value == '1') {
+        cmd.find('.iconCmd').empty().append("<i class='icon_green fas fa-check'></i>");
+      }else {
+        cmd.find('.iconCmd').empty().append("<i class='icon_red fas fa-times'></i>");
+      }
+    }
+    jeedom.cmd.update['#boiler_status_id#']({display_value:'#boiler_status#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+   </script>
+
+</div>
+
+  
+</div>
+    
+    
+    
+  					
+
+    
+    
+
+
+    
+  </center>  
+    
+
+      
+      
+<!--*******Pan_one*****************************************************-->
+<div class="na_Infos_#uid# Pan_one">
+
+<center>
+               		
+              
+				
+  
+  <br/>
+  
+<div class="btn-group gr2" style="">
+  
+
+  
+  
+  
+  
+  
+<!--  ********"#setschedule_id#"******** -->
+<span class="btn_boilmod btnschedule naModeCmd cmd cmd-widget cursor tooltips" data-type="action" data-modetech="schedule" 
+      data-template="tmplicon" data-cmd_id="#setmode_id#" data-cmd_uid="cmd#setmode_id#_#uid#_" data-version="mobile" 
+      style="min-width: 25px;" title="Mode Planning (Home)">
+	  <span class="naiconCmd btcmmmm"><i class="icon_blue fas fa-cog"></i></span>
+</span> 
+
+<!--  ******"#setaway_id#"********** -->
+<span class="btn_boilmod btnaway naModeCmd cmd cmd-widget tooltips cursor" data-type="action" data-modetech="away" 
+      data-template="tmplicon" data-cmd_id="#setmode_id#" data-cmd_uid="cmd#setmode_id#_#uid#_" data-version="mobile" 
+      style="min-width: 25px;" title="Mode Absent (Home)">
+		<span class="naiconCmd btcmmmm"><i class="icon_blue icon loisir-runner5"></i></span>
+</span>   
+    
+<!--  ********"#sethg_id#"******** -->
+<span class="btn_boilmod btnhg naModeCmd cmd cmd-widget tooltips cursor" data-type="action" data-modetech="hg" 
+      data-template="tmplicon" data-cmd_id="#setmode_id#" data-cmd_uid="cmd#setmode_id#_#uid#_" data-version="mobile" 
+      style=" min-width: 25px;" title="Mode H.Gel (Home)">
+		<span class="naiconCmd btcmmmm"><i class="icon_blue icon jeedomapp-weather"></i></span>
+</span> 
+     
+     
+<!--  ********"#sethg_id#"******** -->
+<span class="btn_boilmod btnoff naModeCmd cmd cmd-widget tooltips cursor" data-type="action" data-modetech="off" 
+      data-template="tmplicon" data-cmd_id="#setmode_id#" data-cmd_uid="cmd#setmode_id#_#uid#_" data-version="mobile" 
+      style=" min-width: 25px;" title="Eteindre le Thermostat (Home)">
+		<span class="naiconCmd btcmmmm"><i class="icon_blue fas fa-power-off"></i></span>
+</span>      
+	
+  
+  
+  
+  
+	<script>
+		$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod').on('click',	function() {
+			var cmdId = $(this).attr('data-cmd_id');
+			var modetoset = $(this).attr('data-modetech');
+			console.log("cmdId: " + cmdId + ' ' + modetoset);
+			//jeedom.cmd.execute({id: $(this).attr('data-cmd_id')});
+			if(modetoset != '#home_modetech#'){
+				jeedom.cmd.execute({id: '#setmode_id#', value: {'title': modetoset, 'message': ''}});
+			}
+		});	
+		
+      	var catcolor = $('.eqLogic[data-eqLogic_uid=#uid#]').attr('data-cat_color',);	
+			if ('#home_modetech#'=='hg') {
+				$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnhg').addClass('active ');
+				$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnhg').removeClass('cursor');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnschedule').removeClass('active');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnaway').removeClass('active');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnoff').removeClass('active');
+				$('.eqLogic[data-eqLogic_uid=#uid#] .sysmodes').css('color', 'white');
+            	$('.eqLogic[data-eqLogic_uid=#uid#] .sysmodes').append('hg');
+            	$('.eqLogic[data-eqLogic_uid=#uid#] .sphiver').css('font-weight', 'bold');
+            }
+            else if ('#home_modetech#'=='away') {
+                $('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnaway').addClass('active');
+                $('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnaway').removeClass('cursor');
+              
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnschedule').removeClass('active');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnhgbtnhg').removeClass('active');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnoff').removeClass('active');
+            }
+			else if ('#home_modetech#'=='off') {
+                $('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnoff').addClass('active');
+                $('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnoff').removeClass('cursor');
+              
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnschedule').removeClass('active');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnhgbtnhg').removeClass('active');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnaway').removeClass('active');
+			} 
+			else if ('#home_modetech#'=='schedule') {
+                $('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnschedule').addClass('active');
+                $('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnschedule').removeClass('cursor');
+              
+                $('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnoff').removeClass('active');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnhgbtnhg').removeClass('active');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .btn_boilmod.btnaway').removeClass('active');
+			}
+	</script>
+      
+
+
+	
+	
+ </div> 
+  
+  
+   
+     <!--   ****   *** -->
+<!-- *********************  -->   
+	<div class="cmd cmd-widget zprofil" style="margin-left: 5px; margin-top: 5px;"><br/></div>
+     
+<!-- *********************  -->
+    <div class="cmd cmd-widget zplanning tooltips" style="margin-left: 5px; margin-top: 5px;"></div>
+  
+ 
+<!-- *********************  -->
+  	<div class="planningset_#id#" style="display:none;">
+        
+         <div class="cmd cmd-widget" data-type="action" data-subtype="select" data-cmd_id="#planningset_id#" data-version="#version#" data-eqLogic_id="#id#" title="#planningset_collectDate#" style="width:100%!important; max-height: 40px!important; margin-top: -15px;">
+        <div class="content-xs" style="display: flex; justify-content: center !important;padding-left: calc(50% - 68px) !important">
+          <span class="" style="padding-top:19px;/*padding-left:5px;width: 50px;*/">Planning : </span>
+          <select class="selectCmd" style="width:calc(100% - 55px) !important;">#planningset_listValue#</select>
+        </div>
+      </div>
+       <script>
+            
+                  				
+			$('.eqLogic[data-eqLogic_uid=#uid#] .naPlanningmenu option').on('click', function() {
+				if(this.text != '#nowplanning#'){
+					jeedom.cmd.execute({id: '#planningset#', value: {'select': $(this).value()}});
+				}
+			});
+				
+		</script> 
+				
+      </div> 
+  
+  
+  <div class="thermPriority_set_#id#" style=";">
+        
+         <div class="cmd cmd-widget" data-type="action" data-subtype="select" data-cmd_id="#thermPriority_set_id#" data-version="#version#" data-eqLogic_id="#id#" title="#thermPriority_set_collectDate#" style="width:100%!important; max-height: 40px!important; margin-top: -15px;">
+        <div class="content-xs" style="display: flex; justify-content: center !important;padding-left: calc(50% - 68px) !important">
+          <span class="" style="padding-top:19px;/*padding-left:5px;width: 50px;*/">Priorité : </span>
+          <select class="selectCmd naPrioritymenu" style="width:calc(100% - 55px) !important;">#thermPriority_set_listValue#</select>
+        </div>
+      </div>
+      <script>
+            
+                  				
+			$('.eqLogic[data-eqLogic_uid=#uid#] .naPrioritymenu option').on('click', function() {
+				if(this.text != '#thermPriority#'){
+					jeedom.cmd.execute({id: '#thermPriority_set#', value: {'select': $(this).value()}});
+				}
+			});
+				
+		</script>  
+      </div> 
+  
+  <div class="cmd cmd-widget" data-type="info" data-subtype="binary" data-template="tmplicon" data-version="mobile" data-eqlogic_id="1239" data-cmd_id="29983" data-cmd_uid="cmd29983__232465675__">
+	<center>
+		<div class="cmdName ">thermPriority :<select class="selectCmd naPrioritymenu" style="width:calc(100% - 55px) !important;">#thermPriority_set_listValue#</select> </div>
+		 
+		
+	</center>
+	
+</div>
+  
+  
+   	
+<!-- thermPriority_select  *********************  -->
+<!-- *******  refreshall  *****************   
+<div class="cmd cmd-widget reportModeHidden" data-type="action" data-subtype="other" data-template="default" data-cmd_id="#refreshall_id#" 
+data-cmd_uid="cmd#refreshall_id##uid#" data-version="#version#" data-eqlogic_id="#id#"><br/>
+  <div class="content-xs">
+    <a class="btn btn-sm btn-default action tooltips tooltips">Rafraichir Tout</a>
+  </div>
+  <script>
+    $('.cmd[data-cmd_uid=cmd#refreshall_id##uid#]:last .action').off('click').on('click', function () {
+      jeedom.cmd.execute({id: '#refreshall_id#'});
+    });
+    if ($('.cmd[data-cmd_uid=cmd#refreshall_id##uid#]').last().prev().data('subtype') != undefined && $('.cmd[data-cmd_id=#refreshall_id#]').last().prev().data('subtype') != 'other'
+    && $('.cmd[data-cmd_uid=cmd#refreshall_id##uid#]').last().prev().css('display') != 'block') {
+      $('.cmd[data-cmd_uid=cmd#refreshall_id##uid#]').last().prepend('<br/>');
+    }
+    if("Rafraichir Tout" != 'Rafraichir Tout'){
+      $('.cmd[data-cmd_uid=cmd#refreshall_id##uid#]:last .action').attr('title',"Rafraichir Tout")
+    }
+  </script>
+</div>
+-->  
+   
+   
+   
+   
+   
+
+
+  
+<script>
+			
+					console.log("home_modetech : " + '#home_modetech#')
+			if ('#home_modetech#' == 'away') {//away;hg;max;schedule;off;manuel, datetimepicker, awaypicker
+				$('.eqLogic[data-eqLogic_uid=#uid#] .room' ).attr('data-thmode', 'away');
+				$('.eqLogic[data-eqLogic_uid=#uid#] .away').css('color', 'white');
+              	var htmlaway ='<i class="fas fa-times-circle cancelaway cursor tooltips" style="margin-left: 0px;color:#b93a3e!important"></i>';
+              		htmlaway += '   <strong class="state" title="Profile en cours">Absent</strong>'
+              		htmlaway += '  <i class="fas fa-arrow-right" style="" title=""></i> ';
+              		htmlaway += '<span class=" natimepicker cursor tooltips" data-mode="away" title="Choisir Fin..." style="margin-left: 0px"> #setpointmode_endtime#</span>';
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .zprofil').empty().html(htmlaway);
+			} 
+         	else if ('#home_modetech#' == 'hg') {
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .room' ).attr('data-thmode', 'hg');
+				profile ='';
+                profile += '<span class="fas fa-times-circle cancelhg cursor tooltips" title="Désactiver le mode HG" style="margin-left: 0px;color:#b93a3e!important"></span>';
+				profile += '   <strong class="state" title="Profile en cours">Hors-gel</strong> <i class="fas fa-arrow-right"></i> ';
+				profile += '<span class="natimepicker cursor tooltips" data-mode="hg" title="Choisir Fin" style="margin-left: 0px"> #setpointmode_endtime#</span>';
+                $('.eqLogic[data-eqLogic_uid=#uid#] .zprofil').empty().html(profile);
+						
+			} 
+         	else if ('#home_modetech#' == 'schedule') {
+              	console.log("home_modetech : " + '#home_modetech#')
+                $('.eqLogic[data-eqLogic_uid=#uid#] .room' ).attr('data-thmode', 'schedule');
+				profile ='';
+                profile +='';
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .zprofil').empty().html(profile);
+              	//$('.eqLogic[data-eqLogic_uid=#uid#] .zprofil').hide();
+				planning = '';
+              	planning += $('.eqLogic[data-eqLogic_uid=#uid#] .planningset_#id#').html();
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .zplanning').empty().html(planning);
+                //$('.eqLogic[data-eqLogic_uid=#uid#] .planning').css('display', 'block');
+			} 
+         	else if ('#home_modetech#' == 'off') {
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .na_cons_up').removeClass('cmd-widget')
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .na_cons_down').removeClass('cmd-widget')
+              	//$('.eqLogic[data-eqLogic_uid=#uid#] .na_cons_down').attr('title','Off !')
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .room').attr('data-thmode', 'off')
+				$('.eqLogic[data-eqLogic_uid=#uid#] .off').css('color', 'white')
+              	profile = '<span class="fas fa-power-off canceloff cursor tooltips" title="Allumer le Thermostat" style=";color:#b93a3e!important"> </span>';
+				profile += ' <strong class="state" title="Profile en cours">Le Thermostat est éteint</strong>';
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .zprofil').empty().html(profile)
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .naModeinfos').addClass("hide")
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .nacontrol').addClass("disabled");
+				
+              
+            } 
+         	else if ('#home_modetech#' == 'manual'){//if ('#modetech#' == 'manual')
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .room' ).attr('data-thmode', 'manual');
+              	profile ='';
+                profile +='<span class="fa techno-fingerprint41 cancelmanual cursor tooltips" title="Désactiver le mode Manuel" style="font-size: 1em;margin-left: 0px;color:#b93a3e!important"></span> ';
+				profile +='  <strong class="state" >Manuel </strong><i class="fas fa-arrow-right"></i> ';
+				profile +='<span class="natimepicker cursor tooltips" data-mode="manual" title="Choisir Fin" style="margin-left: 0px"> #setpointmode_endtime#</span>';
+                $('.eqLogic[data-eqLogic_uid=#uid#] .zprofil').empty().html(profile);
+				if ('#home_modetech#' != '#home_modetech#'){
+                  	planning = '';
+                    planning += ' <strong class="state" style="margin-left: 15px">Mode Home: </strong> ';
+					planning +='<span class="tooltips" data-mode="home_modetech" style="margin-left: 2px"> #home_modetech#</span>';
+                  	$('.eqLogic[data-eqLogic_uid=#uid#] .zplanning').empty().html(planning);
+                }
+			}
+			$('.eqLogic[data-eqLogic_uid=#uid#] .canceloff').on('click', function(){
+				//jeedom.cmd.execute({id: '#setschedule_id#'});
+              	jeedom.cmd.execute({id: '#setschedule_id#'});
+            });	
+            $('.eqLogic[data-eqLogic_uid=#uid#] .hg').on('click', function () {
+                 jeedom.cmd.execute({id: '#sethg_id#'});
+            });
+            $('.eqLogic[data-eqLogic_uid=#uid#] .cancelhg').on('click', function(){
+                jeedom.cmd.execute({id: '#setschedule_id#'});
+            });
+        	
+						
+			$('.eqLogic[data-eqLogic_uid=#uid#] .away').on('click', function () {
+                jeedom.cmd.execute({id: '#setaway_id#'});
+            });
+            $('.eqLogic[data-eqLogic_uid=#uid#] .cancelaway').on('click', function(){
+				jeedom.cmd.execute({id: '#setschedule_id#'});
+            });
+  			 $('.eqLogic[data-eqLogic_uid=#uid#] .setschedule').on('click', function () {
+            	jeedom.cmd.execute({id: '#setschedule_id#'});
+            });       
+			
+                   
+			$('.eqLogic[data-eqLogic_uid=#uid#] .roomAuto').on('click', function () {
+            	jeedom.cmd.execute({id: '#setschedule_id#'});
+            });
+           
+			$('.eqLogic[data-eqLogic_uid=#uid#] .off').on('click', function () {
+                jeedom.cmd.execute({id: '#setoff_id#'});
+            });		
+			
+  			
+            if ('#home_anticipating#' == 1) {
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .room' ).attr('data-boilerstate', 'anticip');
+            } else if ('#powerRequest#' > 0 || '#requestOn#' === 1) {
+  				$('.eqLogic[data-eqLogic_uid=#uid#] .room' ).attr('data-boilerstate', 'on');
+              	
+            }
+  
+  
+  			if ('#boiler_anticipating#' == 1) {
+                $('.eqLogic[data-eqLogic_uid=#uid#] .naboilerstatus .icon').attr("style","color:#c37d28!Important;");
+				$('.eqLogic[data-eqLogic_uid=#uid#] .naboilerstatus').attr("title","Anticipation en cours");
+            }else if ('#boiler_status#' == 1) {
+              //console.log('therm_boilerstatus: ' + '#therm_boilerstatus#')
+              	//$('.eqLogic[data-eqLogic_uid=#uid#] .room' ).attr('data-boilerstate', 'on');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .naboilerstatus').attr("title","En chauffe");
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .naboilerstatus .icon').attr("style","color:var(--al-danger-color)!Important;");
+            }else{
+            	$('.eqLogic[data-eqLogic_uid=#uid#] .room' ).attr('data-boilerstate', '');
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .naboilerstatus').attr("title","Chaudière arrêtée");
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .naboilerstatus .icon').attr('style', 'font-size: 0.8em; color:rgba(240,240,240,0.5)!Important');
+            }
+  
+
+</script>
+      
+    
+    
+    
+    
+    
+    
+	 </center>
+           
+
+</div><!-- ********fin Pan_one *********-->
+<div class="na_Infos_#uid# Pan_two" style="display : none;">
+						
+
+  
+
+    
+    <center>
+      <br/>
+         
+<!-- *******  wifi_strength  *****************   -->
+<div class="cmd cmd-widget history cursor tooltips" data-type="info" data-subtype="numeric" data-template="line" 
+data-cmd_id="#wifi_strength_id#" data-cmd_uid="cmd#wifi_strength_id##uid#" data-version="#version#" data-eqlogic_id="#id#" data-alertlevel="#alertLevel#">
+	<div class="content-xs">
+		<span class="cmdName ">Signal Wifi </span> <strong class="state"></strong> 
+	</div>
+	<script>
+		jeedom.cmd.update['#wifi_strength_id#'] = function(_options) {
+			var cmd = $('.cmd[data-cmd_id=#wifi_strength_id#]')
+			//cmd.attr('title','Date de valeur : '+_options.valueDate+'<br/>Date de collecte : '+_options.collectDate)
+			cmd.find('.state').empty().append(_options.display_value);
+			if(_options.alertLevel){
+				if(_options.alertLevel == 'warning'){
+					cmd.find('.content-xs').addClass('label label-warning')
+					cmd.attr('data-alertlevel','warning');
+				}else if(_options.alertLevel == 'danger'){
+					cmd.find('.content-xs').addClass('label label-danger')
+					cmd.attr('data-alertlevel','danger');
+				}else{
+					cmd.find('.content-xs').removeClass('label label-warning label-danger')
+					cmd.attr('data-alertlevel','none');
+				}
+			}
+		}
+		jeedom.cmd.update['#wifi_strength_id#']({display_value:'#wifi_strength#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'})
+	</script>
+</div>
+
+
+<!-- *******  hg_temp  *****************   -->
+<div class="cmd cmd-widget tooltips" data-type="info" data-subtype="numeric" data-template="line" data-cmd_id="#hg_temp_id#" data-cmd_uid="cmd#hg_temp_id##uid#" data-version="#version#" data-eqlogic_id="#id#" data-alertlevel="#alertLevel#">
+	<div class="content-xs">
+		<span class="cmdName ">T° Hors-gel </span> <strong class="state"></strong> °C
+	</div>
+	<script>
+		jeedom.cmd.update['#hg_temp_id#'] = function(_options) {
+			var cmd = $('.cmd[data-cmd_id=#hg_temp_id#]')
+			//cmd.attr('title','Date de valeur : '+_options.valueDate+'<br/>Date de collecte : '+_options.collectDate)
+			cmd.find('.state').empty().append(_options.display_value);
+			if(_options.alertLevel){
+				if(_options.alertLevel == 'warning'){
+					cmd.find('.content-xs').addClass('label label-warning')
+					cmd.attr('data-alertlevel','warning');
+				}else if(_options.alertLevel == 'danger'){
+					cmd.find('.content-xs').addClass('label label-danger')
+					cmd.attr('data-alertlevel','danger');
+				}else{
+					cmd.find('.content-xs').removeClass('label label-warning label-danger')
+					cmd.attr('data-alertlevel','none');
+				}
+			}
+		}
+		jeedom.cmd.update['#hg_temp_id#']({display_value:'#hg_temp#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'})
+	</script>
+</div>
+
+
+<!-- ******* away_temp  *****************   -->
+<div class="cmd cmd-widget tooltips" data-type="info" data-subtype="numeric" data-template="line" data-cmd_id="#away_temp_id#" 
+data-cmd_uid="cmd#away_temp_id##uid#" data-version="#version#" data-eqlogic_id="#id#" data-alertlevel="#alertLevel#">
+	<div class="content-xs">
+		<span class="cmdName ">T° Absence </span> <strong class="state"></strong>  °C
+	</div>
+	<script>
+		jeedom.cmd.update['#away_temp_id#'] = function(_options) {
+			var cmd = $('.cmd[data-cmd_id=#away_temp_id#]')
+			//cmd.attr('title','Date de valeur : '+_options.valueDate+'<br/>Date de collecte : '+_options.collectDate)
+			cmd.find('.state').empty().append(_options.display_value);
+			if(_options.alertLevel){
+				if(_options.alertLevel == 'warning'){
+					cmd.find('.content-xs').addClass('label label-warning')
+					cmd.attr('data-alertlevel','warning');
+				}else if(_options.alertLevel == 'danger'){
+					cmd.find('.content-xs').addClass('label label-danger')
+					cmd.attr('data-alertlevel','danger');
+				}else{
+					cmd.find('.content-xs').removeClass('label label-warning label-danger')
+					cmd.attr('data-alertlevel','none');
+				}
+			}
+		}
+		jeedom.cmd.update['#away_temp_id#']({display_value:'#away_temp#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'})
+	</script>
+</div>
+  
+<!-- *******  Whook_state  *****************   -->
+<div class="cmd cmd-widget tooltips" data-type="info" data-subtype="string" data-template="line" data-cmd_id="#wbhook_last_id#" data-cmd_uid="cmd#wbhook_last_id##uid#" data-version="#version#" data-eqlogic_id="#id#" data-alertlevel="#alertLevel#">
+	<div class="content-xs">
+		<span class="cmdName ">wbhook subscribe_date  </span> <strong class="state"></strong>
+	</div>
+	<script>
+		jeedom.cmd.update['#wbhook_last_id#'] = function(_options) {
+			var cmd = $('.cmd[data-cmd_id=#wbhook_last_id#]')
+			cmd.attr('title','Dernier message : '+_options.display_value)
+			//cmd.attr('title','Date de valeur : '+_options.valueDate)
+			cmd.find('.state').empty().append('#wbhook_subscribe_date#');
+			if(_options.alertLevel){
+				if(_options.alertLevel == 'warning'){
+					cmd.find('.content-xs').addClass('label label-warning')
+					cmd.attr('data-alertlevel','warning');
+				}else if(_options.alertLevel == 'danger'){
+					cmd.find('.content-xs').addClass('label label-danger')
+					cmd.attr('data-alertlevel','danger');
+				}else{
+					cmd.find('.content-xs').removeClass('label label-warning label-danger')
+					cmd.attr('data-alertlevel','none');
+				}
+			}
+		}
+		jeedom.cmd.update['#wbhook_last_id#']({display_value:'#wbhook_last#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'})
+	</script>
+</div>
+
+        	
+ <!--*******tablehome_cons homeboost ********
+	<div class="tablehome_cons_#uid#" style="width: 120px; margin-top:5px">
+	<tr>       
+		<td colspan="3" style="text-align: center;">
+                <center>
+              <div class="tooltips cmd cmd-widget #consigne_history#" data-type="info" data-subtype="numeric" data-cmd_id="#consigne_id#" data-cmd_uid="cmd#consigne_id#_#id#" data-version="mobile" data-template="line" data-eqlogic_id="#id#" title="Valeur du: #consigne_collectDate#">
+                    <div class="content-xs">
+                        <span   class="cmdName">Home Boost </span> 
+                        <strong class="state value#homeboost_id#">  </strong>
+                    </div>
+                </div> 
+                  </center>
+         </td>
+    </tr>
+
+	<tr>
+		<td style="width: 20px; text-align: left; font-size : 0.9em;">7</td>
+		<td style="width: auto; text-align: center; font-size : 0.9em;">
+
+          <div class="cmd cmd-widget homeboost_cmd" data-type="action" data-subtype="slider" data-template="default" 
+               data-cmd_id="#homeboost_id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#id#">
+
+              <div class="content-xs">
+                  <div class="slider" value="#consigne#" id="sliderdch">
+                  <span  class="ui-slider-handle" id="custom-handle"></span>
+                  </div>
+              </div>
+              <script>
+                
+                
+               var divhboost = $('.eqLogic[data-eqLogic_uid=#uid#] .tablehome_cons_#uid#');  
+              /*var cmd = $('.eqLogic[data-eqLogic_uid=#uid#] .homeboost_cmd');*/
+              if ("#homeboost_id#".startsWith('#') && "#homeboost_id#".endsWith('#')) {
+				divhboost.addClass('hide');
+				//$('.eqLogic[data-eqLogic_uid=#uid#] .tablehome_cons_#uid#').hide();
+                
+                  
+              }else{
+                  $(".eqLogic[data-eqLogic_uid=#uid#] .slider.slider-horizontal").css('z-index',1);
+                  jeedom.cmd.update['#homeboost_id#'] = function(_options){
+                      $(".cmd[data-cmd_id=#homeboost_id#] .slider").slider({
+                          min: ('1' == '') ? 0 : parseInt('7'),
+                          max: ('100' == '') ? 100 : parseInt('30'),
+                          value: ('#consigne#' == '') ? 0 : parseInt(_options.display_value),
+                          slide: function(event, ui) {
+                        //$(".value#homeboost_id#").show()
+                        $(".value#homeboost_id#").html(ui.value);
+                        $('.eqLogic[data-eqLogic_uid=#uid#] .nacons#id#').html(ui.value);
+                          updateconsinfos();
+                      }
+                      })
+                  }
+                  jeedom.cmd.update['#homeboost_id#']({display_value:'#consigne#'});
+
+                  $(".eqLogic[data-eqLogic_uid=#uid#] .slider").on('slidestop', function (event,ui) {
+                      if(ui.value != '#consigne#'){
+                          var cmd = $(this).parents('.cmd').attr('data-cmd_id');
+                          //console.log('cmdp: ' + cmd);
+                          jeedom.cmd.execute({id: cmd, value: {'slider': ui.value}});
+
+                        //console.log('slidestop' + ui.value )
+                        //jeedom.cmd.execute({id: '#homeboost_id#', value: {slider: ui.value}});
+                      }                    
+                    //$(".value#homeboost_id#").hide();
+                  });
+              }
+            </script> 
+
+          </div>                     
+		</td>
+
+		<td style="width: 20px; text-align: right; font-size : 0.9em;">30<br/></td>
+	</tr>
+	</div> 
+
+       --> 
+
+    <!-- background-color: #586576 !important;<div class="na_comState" style="margin-left: 5px;margin-top:5px;margin-bottom:5px">
+    -->
+  
+  
+  </center>
+    
+</div> <!--  Fin Pan_two ******* --> 
+</div>
+  <!--  eq_body  *****************************************************************-->
+
+
+ 
+   
+
+
+<div class="table_bottom" style="">
+	<table style="position:absolute; right:0px; bottom:0px; width: 100%; height:; background-color: transparent!important;" >	
+	<tr style="height: 22px;">
+			<td class="td_bot1" style="width: 18px; text-align: left;">
+				<span class="infcmd pull-left cursor infcmd_#uid#" title='Autres infos' style="margin-left:3px">
+					<i class="icon fas fa-info-circle infcmd_ico_#uid#"></i>
+  				</span>
+              
+       
+              
+              
+             
+	
+
+    	<div class="scrolldiv infhtm" style="display: none"> 
+
+ 
+    <!-- *home_modetech********************  -->
+  <div class="cmd cmd-widget home_modetech_cmd" data-type="info" data-subtype="string" data-cmdid="#home_modetech_id#" 
+  data-version="mobile" data-template="line" data-eqlogic_id="#id#" style="margin-left: 5px;">
+              <div class="content-xs">
+                  <span class="cmdName">Home mode: </span> 
+                  <strong class="state">#home_modetech#</strong>
+              </div>
+        <script>
+      /*jeedom.cmd.update['#home_modetech_id#'] = function(_options) {
+                //console.log("option: " + _options)
+              var cmd = $('.cmd[data-cmdid=#home_modetech_id#]')
+              cmd.attr('title','Date de valeur : '+_options.valueDate+'<br/>Date de collecte : '+_options.collectDate)
+              cmd.find('.state').empty().append(_options.display_value)
+              if(_options.alertLevel){
+                  if(_options.alertLevel == 'warning'){
+                      cmd.addClass('label label-warning')
+                      cmd.attr('data-alertlevel','warning');
+                  }else if(_options.alertLevel == 'danger'){
+                      cmd.addClass('label label-danger')
+                      cmd.attr('data-alertlevel','danger');
+                  }else{
+                      cmd.removeClass('label label-warning label-danger')
+                      cmd.attr('data-alertlevel','none');
+                  }
+              }
+          }
+          jeedom.cmd.update['#home_modetech_id#']		({display_value:'#home_modetech#',collectDate:'#home_modetech_collectDate#',alertLevel:'#home_modetech_alertLevel#'})
+      */
+      </script>
+  </div>
+   <br/>
+    <!-- *boiler_anticipating********************  -->
+   <div class="cmd cmd-widget boiler_anticipating_cmd" data-type="info" data-subtype="string" data-cmdid="#boiler_anticipating_id#" 
+   data-version="mobile" data-template="line" data-eqlogic_id="#id#" style="margin-left: 5px;">
+              <div class="content-xs">
+                  <span class="cmdName">Anticipation(boiler): </span> 
+                  <strong class="state">#boiler_anticipating#</strong>
+              </div>
+              <script>
+              var cmd = $('.eqLogic[data-eqLogic_uid=#uid#] .boiler_anticipating_cmd');
+      if ("#boiler_anticipating_id#".startsWith('#') && "#boiler_anticipating_id#".endsWith('#')) {
+          cmd.addClass('hide');
+      }
+        </script>
+  </div> 
+  <br/>
+  <!-- *boiler_status********************  -->
+   <div class="cmd cmd-widget boiler_status_cmd" data-type="info" data-subtype="string" data-cmdid="#boiler_status_id#" 
+   data-version="mobile" data-template="line" data-eqlogic_id="#id#" style="margin-left: 5px;">
+              <div class="content-xs">
+                  <span class="cmdName">boiler_status: </span> 
+                  <strong class="state">#boiler_status#</strong>
+              </div>
+      <script>
+              var cmd = $('.eqLogic[data-eqLogic_uid=#uid#] .boiler_status_cmd');
+      if ("#boiler_status_id#".startsWith('#') && "#boiler_status_id#".endsWith('#')) {
+          cmd.addClass('hide');
+      }
+        </script>
+  </div> 
+                          <br/>
+                      <div class="cmd cmd-widget " data-type="info" data-subtype="string" data-cmdid="#lastCommunication#" 
+                      data-template="line" style="margin-left: 5px;">
+                          <div class="content-xs">
+                              <span class="cmdName">Donées du: </span> 
+                              <strong class="lastCom">#lastCommunication#</strong>
+                          </div>
+                      </div>
+                      <br/>
+                      <div class="cmd cmd-widget " data-type="info" data-subtype="string" data-cmdid="#numberTryWithoutSuccess#" 
+                      data-template="line" style="margin-left: 5px;">
+                          <div class="content-xs">
+                                 <span class="cmdName">Tentatives échouées: </span> 
+                              <strong class="lastCom">#numberTryWithoutSuccess#</strong>
+                          </div>
+                      </div>
+                    <br/>
+                     <div class="cmd cmd-widget temperature_outdoor_cmd" data-cmdid="#temperature_outdoor#">
+                          <div class="content-xs">
+                                 <span class="cmdName">temperature_outdoor: </span> 
+                              <strong class="lastCom">#temperature_outdoor#</strong>
+                          </div>
+      <script>
+      var cmd = $('.eqLogic[data-eqLogic_uid=#uid#] .temperature_outdoor_cmd');
+      if ("#temperature_outdoor_id#".startsWith('#') && "#temperature_outdoor_id#".endsWith('#')) {
+          cmd.addClass('hide');
+      }
+   </script>
+                      </div>
+                    
+                    
+                    
+                    
+    <div class="cmd cmd-widget requestOn_cmd" data-type="info" data-subtype="string" data-cmdid="#requestOn_id#"
+            data-version="mobile" data-template="line" data-eqlogic_id="#id#" style="margin-left: 5px;">
+      <div class="content-xs">
+          <span class="cmdName">Demande de chauffe: </span> 
+          <strong class="state">#requestOn#</strong>
+      </div>
+    <script>
+    
+      var cmd = $('.eqLogic[data-eqLogic_uid=#uid#] .requestOn_cmd');
+      if ("#requestOn_id#".startsWith('#') && "#requestOn_id#".endsWith('#')) {
+          cmd.addClass('hide');
+      }
+   
+  
+            /*jeedom.cmd.update['#requestOn_id#'] = function(_options) {
+                var cmd = $('.eqLogic[data-eqLogic_uid=#uid#]').find('.cmd.requestOn_cmd');
+              $.each( _options , function( key, module ) {
+                    console.log( "_options-requestOn_id", key, ":", module );
+              });
+          }
+            jeedom.cmd.update['#requestOn_id#']
+              ({display_value:'#requestOn#',collectDate:'#requestOn_collectDate#'})
+              */
+       </script>  
+        
+  </div> 
+  <br/>
+     <!-- powerRequest*********************  -->
+  <div class="cmd cmd-widget powerRequest_cmd" data-type="info" data-subtype="string" data-cmdid="#powerRequest_id#" 
+        data-version="mobile" data-template="line" data-eqlogic_id="#id#" style="margin-left: 5px;">
+              <div class="content-xs">
+                  <span class="cmdName">% Ouverture de Vanne: </span> 
+                  <strong class="state">#powerRequest#</strong>
+              </div>
+    
+  <script>
+      var cmd = $('.eqLogic[data-eqLogic_uid=#uid#] .powerRequest_cmd');
+      if ("#powerRequest_id#".startsWith('#') && "#powerRequest_id#".endsWith('#')) {
+          cmd.addClass('hide');
+      }
+   </script>
+    
+    
+  </div> 
+   <br/>
+          
+          
+            <!-- powerRequest*********************  -->
+  <div class="cmd cmd-widget powerRequest_cmd" data-type="info" data-subtype="string" data-cmdid="#powerRequest_id#" 
+        data-version="mobile" data-template="line" data-eqlogic_id="#id#" style="margin-left: 5px;">
+              <div class="content-xs">
+                  <span class="cmdName">% Type: </span> 
+                  <strong class="state">#type#</strong>
+              </div>
+    
+  <script>
+      var cmd = $('.eqLogic[data-eqLogic_uid=#uid#] .powerRequest_cmd');
+      if ("#powerRequest_id#".startsWith('#') && "#powerRequest_id#".endsWith('#')) {
+          cmd.addClass('hide');
+      }
+   </script>
+    
+    
+  </div> 
+   <br/> 
+          
+          
+          
+          
+    <!-- open_window*********************  -->
+    <div class="cmd cmd-widget open_window_cmd" data-type="info" data-subtype="string" data-cmdid="#open_window_id#" 
+        data-version="mobile" data-template="line" data-eqlogic_id="#id#" style="margin-left: 5px;">
+              <div class="content-xs">
+                  <span class="cmdName">Fenetre ouverte: </span> 
+                  <strong class="state">#open_window#</strong>
+              </div>
+      <script>
+            var cmd = $('.eqLogic[data-eqLogic_uid=#uid#] .open_window_cmd');
+			if ("#open_window_id#".startsWith('#') && "#open_window_id#".endsWith('#')) {
+                  cmd.addClass('hide');	
+            }else{
+				//$('.eqLogic[data-eqLogic_uid=#uid#] .naModeinfos').removeClass("hide");//na-icon-window
+              	//$('.eqLogic[data-eqLogic_uid=#uid#] .naModeinfos .na-icon-window').removeClass("hide");
+            }
+        
+        	if(1==10){
+              $('.eqLogic[data-eqLogic_uid=#uid#] .naModeinfos').removeClass("hide");//na-icon-window
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .naModeinfos .na-icon-window').removeClass("hide");
+            }
+        
+        
+        
+        
+    </script>
+  
+    </div> 
+  <br/>
+                    
+                    
+</div>
+<!--Fin scrolldiv infhtm  -->   
+  
+        
+
+				
+                  
+   
+
+                  
+                  
+               	
+			</td>
+			<td class="td_bot2" style="text-align: center;">
+      			 
+             
+              	<span class="#alert_level#" title="#alert_name#" >
+                   	<span class="dropup na_error" style="display:none">
+                        <a class="icon fas fa-exclamation dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                        <div class="dropdown-menu naInfos" x-placement="top-start" >
+                            
+                          
+                          <div class="cmd scrolldiv err_msg" ></div>
+                        
+                      </div>
+                    </span>
+
+                   
+                   
+					
+				</span>
+              
+             
+      		</td>
+			<td class="td_bot3" style="width: 18px;text-align: right;">
+				<i class="fas fa-retweet cursor tooltips changecmd noRefresh" title='Changer commandes' style="margin-right: 3px;"></i>
+			</td>
+	</tr>
+	
+		<script>
+		try {
+          	html=''
+          	levelinf#id#=''
+			ErreursMsg=#Erreurs_Msg#;
+            nbMsg=ErreursMsg.filter(non_null => non_null !== '').length;
+
+            $.each( ErreursMsg, function( key, module ) {
+				if (module != ''){
+                 	level = module.split("| ")[0];
+                 	msg = module.split("| ")[1];
+                 	
+                  html +='<div class="content-xs" style="margin-left: 5px;">'
+                  html +='<span class="'+level.toLowerCase()+' cmdName">'+level+' :</span>'
+                  html +='<strong class="state"> '+msg+'</strong></div>'
+                  if(key != nbMsg && undefined != nbMsg){
+                    console.log( "key: " + key + " nbMsg: " + nbMsg );
+                    	html +='<li role="separator" class="divider"></li>'
+                    
+                  }
+                  $('.eqLogic[data-eqLogic_uid=#uid#] .naInfos .err_msg').empty().html(html);
+                  //console.log( level + ": " + msg );
+                  if(level.toLowerCase()== "danger" || levelinf#id#=="danger"){
+                    	levelinf#id#="danger";
+                  }else{
+                    	levelinf#id#="warning";
+                  }
+                  console.log( "levelinf#id#: " + levelinf#id# );
+                  var col = 'var(--al-'+levelinf#id#+'-color) !important';
+                  
+                 
+                 // $('.eqLogic[data-eqLogic_uid=#uid#] .infcmd_ico').attr('class', levelinf ); 
+                   //$('.eqLogic[dat a-eqLogic_uid=#uid#] .infcmd').attr('class', levelinf );
+                  if (col != '') {  
+                      //console.log( "col: " + col );
+                    //$('.eqLogic[data-eqLogic_uid=#uid#] .infcmd_ico_#uid#').attr('style', 'color :'+ 'var(--al-'+levelinf#id#+'-color) !important');
+                  }else if ('#numberTryWithoutSuccess#' >= 3) {
+                      $('.eqLogic[data-eqLogic_uid=#uid#] .infcmd_ico_#uid#').attr('style', 'color : #C37D28!important');
+                  } else if('#numberTryWithoutSuccess#' >= 60 || '#eqstate#' != 'ok' ) {
+                      $('.eqLogic[data-eqLogic_uid=#uid#] .infcmd_ico_#uid#').attr('style', 'color : #b93a3e!important');
+                  }else{//if ('#numberTryWithoutSuccess#' == 0) ) 
+                    $('.eqLogic[data-eqLogic_uid=#uid#] .infcmd_ico_#uid#').removeAttr( 'style' );
+                  }
+                  //console.log("nbMsg3: " + nbMsg )
+			
+            }}
+                 // console.log("nbMsg4: " + nbMsg )
+			
+                  );
+          
+          
+          	
+			
+          	if(nbMsg > 0){
+              	console.log("nbMsg5 show: " + nbMsg )
+          		$('.eqLogic[data-eqLogic_uid=#uid#] .dropup.na_error').show();
+              	$('.eqLogic[data-eqLogic_uid=#uid#] .dropup.na_error .icon ').attr('style', 'color :'+ 'var(--al-'+levelinf#id#+'-color) !important');
+            }
+          
+		} catch (e) {
+			console.log( "error: " + e );
+      	} 
+          
+          
+         
+          
+          
+          
+          
+      
+		$('.eqLogic[data-eqLogic_uid=#uid#] .infcmd').on('click', function () {
+			$('.eqLogic[data-eqLogic_uid=#uid#] .infcmd').popover({
+				container: "body",
+				html: true,
+				placement: "auto",
+				selector : true,
+				//title: false, //"<strong>Liste des équipements</strong>",
+				content: function () {return $('.eqLogic[data-eqLogic_uid=#uid#] .infhtm').html(); } ,
+			})
+			.on("show.bs.popover", function () { 
+				$(this).data("bs.popover").tip().css({
+						"min-width": "220px",
+                  		"max-width": "240px",
+						"max-height":  "150px",
+						//overflow: "auto",
+						"overflow-y": "auto",
+						//"background-color": "--btn-default-color",//"var(--link-color)!important",//"#474646",//'background-color',
+						//"background": "--btn-default-color",//"#383838",
+				}); 
+				setTimeout(function () {
+					$('.eqLogic[data-eqLogic_uid=#uid#] .infcmd').popover('hide');
+				}, 29000);
+			});
+			$('.eqLogic[data-eqLogic_uid=#uid#] .infcmd').popover('show'); 
+		});	
+                  
+        $('.eqLogic[data-eqLogic_uid=#uid#] .changecmd').on('click',function () {
+			$('.eqLogic[data-eqLogic_uid=#uid#] .Pan_two').toggle();
+			$('.eqLogic[data-eqLogic_uid=#uid#] .Pan_one').toggle();
+		});
+					
+	</script>
+	</table>		
+	
+</div>
+<!-- fin table_bottom    -->
+
+
+	
+</div>
+<!-- Fin eqLogic-widget  -->

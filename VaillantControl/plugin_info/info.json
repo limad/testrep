@@ -1,0 +1,18 @@
+{
+	"id" : "VaillantControl",
+	"name" : "Vaillant Control",
+	"description" : "Plugin pour contrôler Multimatic Vaillant",
+	"licence" : "AGPL",
+	"author" : "limad44",
+	"require" : "3.3",
+	"category" : "wellness",
+	"hasDependency" : false,
+	"hasOwnDeamon" : false,
+	"changelog" : "https://limad.github.io/plugin-VaillantControl/#language#/changelog",
+	"documentation" : "https://limad.github.io/plugin-VaillantControl/#language#/",
+	"link" : {
+		"forum": "https://community.jeedom.com/t/plugin-tiers-VaillantControl/26286/"
+	},
+	"language" : ["fr_FR","en_US"],
+	"compatibility" : ["v4","miniplus","smart","rpi","docker","diy","mobile","Jeedomboard","RPI/RPI2"]
+}
